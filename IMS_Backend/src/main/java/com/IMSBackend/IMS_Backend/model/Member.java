@@ -10,6 +10,7 @@ public class Member {
     private String firstName;
     private String middleName;
     private String lastName;
+    private Integer age;
     private String dateOfBirth;
     private String sex;
     private String address;
@@ -30,6 +31,10 @@ public class Member {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public Integer getAge() {
+        return age;
     }
 
     public String getDateOfBirth() {
@@ -66,6 +71,10 @@ public class Member {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public void setDateOfBirth(String dateOfBirth) {

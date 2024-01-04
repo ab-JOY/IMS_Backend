@@ -13,6 +13,7 @@ public class MemberTemp {
     private String firstName_temp;
     private String middleName_temp;
     private String lastName_temp;
+    private Integer age_temp;
     private String dateOfBirth_temp;
     private String sex_temp;
     private String address_temp;
@@ -34,6 +35,10 @@ public class MemberTemp {
 
     public void setLastName_temp(String lastName_temp) {
         this.lastName_temp = lastName_temp;
+    }
+
+    public void setAge_temp(Integer age_temp) {
+        this.age_temp = age_temp;
     }
 
     public void setDateOfBirth_temp(String dateOfBirth_temp) {
@@ -70,6 +75,10 @@ public class MemberTemp {
 
     public String getLastName_temp() {
         return lastName_temp;
+    }
+
+    public Integer getAge_temp() {
+        return age_temp;
     }
 
     public String getDateOfBirth_temp() {

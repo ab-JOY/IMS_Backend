@@ -1,6 +1,9 @@
 package com.IMSBackend.IMS_Backend.controller;
 
+import com.IMSBackend.IMS_Backend.Service.TransferDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.IMSBackend.IMS_Backend.repository.MemberRepository;
 import com.IMSBackend.IMS_Backend.model.Member;
@@ -14,10 +17,10 @@ public class MemberController {
     @Autowired
     private MemberRepository memberRepository;
 
-    @PostMapping("/member")
-    Member newMember(@RequestBody Member newMember){
-        return memberRepository.save(newMember);
-    }
+//    @PostMapping("/member")
+//    Member newMember(@RequestBody Member newMember){
+//        return memberRepository.save(newMember);
+//    }
 
     @GetMapping("/member")
     List<Member> getAllMember(){
@@ -37,6 +40,7 @@ public class MemberController {
                     member.setFirstName(newMember.getFirstName());
                     member.setMiddleName(newMember.getMiddleName());
                     member.setLastName(newMember.getLastName());
+                    member.setAge(newMember.getAge());
                     member.setDateOfBirth(newMember.getDateOfBirth());
                     member.setSex(newMember.getSex());
                     member.setAddress(newMember.getAddress());
@@ -55,4 +59,20 @@ public class MemberController {
         memberRepository.deleteById(id);
         return "Member with id: " +id+ " has been deleted successfully";
     }
+
+    @Autowired
+    private TransferDataService transferDataService;
+
+    @PostMapping("/member")
+    public ResponseEntity<?> transferMemberTemp(){
+        try{
+            transferDataService.transferData();
+            return ResponseEntity.ok("Success");
+        } catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error transferring data");
+        }
+    }
+
+
 }

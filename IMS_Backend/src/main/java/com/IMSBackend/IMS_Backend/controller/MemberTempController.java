@@ -39,6 +39,7 @@ public class MemberTempController {
                     memberTemp.setFirstName_temp(newMemberTemp.getFirstName_temp());
                     memberTemp.setMiddleName_temp(newMemberTemp.getMiddleName_temp());
                     memberTemp.setLastName_temp(newMemberTemp.getLastName_temp());
+                    memberTemp.setAge_temp(newMemberTemp.getAge_temp());
                     memberTemp.setAddress_temp(newMemberTemp.getAddress_temp());
                     memberTemp.setDateOfBirth_temp(newMemberTemp.getDateOfBirth_temp());
                     memberTemp.setSex_temp(newMemberTemp.getSex_temp());
