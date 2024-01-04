@@ -1,8 +1,6 @@
 package com.IMSBackend.IMS_Backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Member {
@@ -16,45 +14,9 @@ public class Member {
     private String sex;
     private String address;
     private String mobileNumber;
-    private String beneficiary;
+    private String MembershipType;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setMobileNumber(String mobileNumber) {
-        this.mobileNumber = mobileNumber;
-    }
-
-    public void setBeneficiary(String beneficiary) {
-        this.beneficiary = beneficiary;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -86,8 +48,43 @@ public class Member {
         return mobileNumber;
     }
 
-    public String getBeneficiary() {
-        return beneficiary;
+    public String getMembershipType() {
+        return MembershipType;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
+
+    public void setMembershipType(String membershipType) {
+        MembershipType = membershipType;
+    }
 }

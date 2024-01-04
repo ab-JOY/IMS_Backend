@@ -1,7 +1,6 @@
 package com.IMSBackend.IMS_Backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import com.IMSBackend.IMS_Backend.repository.MemberRepository;
 import com.IMSBackend.IMS_Backend.model.Member;
@@ -16,26 +15,22 @@ public class MemberController {
     private MemberRepository memberRepository;
 
     @PostMapping("/member")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     Member newMember(@RequestBody Member newMember){
         return memberRepository.save(newMember);
     }
 
     @GetMapping("/member")
-    @PreAuthorize("hasAuthority('ADMIN')")
     List<Member> getAllMember(){
         return memberRepository.findAll();
     }
 
     @GetMapping("/member/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     Member getMemberById(@PathVariable Long id){
         return memberRepository.findById(id)
                 .orElseThrow(()->new MemberNotFoundException(id));
     }
 
     @PutMapping("/member/{id}")
-    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     Member updateMember(@RequestBody Member newMember, @PathVariable Long id){
         return memberRepository.findById(id)
                 .map(member -> {
@@ -46,14 +41,13 @@ public class MemberController {
                     member.setSex(newMember.getSex());
                     member.setAddress(newMember.getAddress());
                     member.setMobileNumber(newMember.getMobileNumber());
-                    member.setBeneficiary(newMember.getBeneficiary());
+                    member.setMembershipType(newMember.getMembershipType());
 
                     return memberRepository.save(member);
                 }).orElseThrow(()->new MemberNotFoundException(id));
     }
 
     @DeleteMapping("/member/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
     String deleteMember(@PathVariable Long id){
         if(!memberRepository.existsById(id)){
             throw new MemberNotFoundException(id);
